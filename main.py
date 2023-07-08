@@ -18,6 +18,8 @@ def main(folder: Path):
         create_new_folder_m_d(file, folder / 'documents')
     for file in parser.ARCHIVES:
         create_new_folder_m_d(file, folder / 'archives')
+    for file in parser.OTHER:
+        create_new_folder_m_d(file, folder / 'other')
 
 
 def create_new_folder_m_d(fl: Path,new_path: Path):
