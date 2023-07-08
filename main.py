@@ -3,7 +3,7 @@ import shutil
 import sys
 import folders_parser as parser
 from normalize import normalize
-# import os
+import os
 
 
 def main(folder: Path):
@@ -24,6 +24,7 @@ def main(folder: Path):
 
 def create_new_folder_m_d(fl: Path,new_path: Path):
     new_path.mkdir(exist_ok=True, parents=True)
+    fl = Path(fl)
     fl.replace(new_path / normalize(fl.name))
 
 def create_new_folder_archives(fl: Path, new_path: Path):
@@ -33,18 +34,19 @@ def create_new_folder_archives(fl: Path, new_path: Path):
     unpack_archives.mkdir(exist_ok=True,parents=True)
     shutil.unpack_archive(fl,unpack_archives)
 
-# def del_empty_folders(path: Path):
-#     for fl in path.iterdir():
-#         if fl.is_file():
-#             continue
-#         elif fl.is_dir():
-#             if len(os.listdir(fl)) == 0:
-#                 fl.rmdir()
+def del_empty_folders(path: Path):
+    for fl in path.iterdir():
+        if fl.is_file():
+            continue
+        elif fl.is_dir():
+            if len(os.listdir(fl)) == 0:
+                fl.rmdir()
 
 if __name__ == "__main__":
     if sys.argv[1]:
         scan_folder = Path(sys.argv[1])
         main(scan_folder)
+        del_empty_folders(scan_folder)
 
 
 

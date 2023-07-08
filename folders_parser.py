@@ -57,7 +57,7 @@ def folder_scan(path: Path) -> None:    #Сканирование указанн
                         dir = '+'
                         break
             if not dir:
-                OTHER.append(el.name)
+                OTHER.append(path / el.name)
 
 
 
