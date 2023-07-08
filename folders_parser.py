@@ -20,7 +20,7 @@ new_folders_with_ex = {
     'OTHER': ['*']
 
 }
-print(list(new_folders_with_ex))
+
 
 
 def folder_scan(path: Path) -> None:    #Сканирование указанной папки

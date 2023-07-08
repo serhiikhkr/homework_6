@@ -39,6 +39,7 @@ def del_empty_folders(path: Path):
         if fl.is_file():
             continue
         elif fl.is_dir():
+            del_empty_folders(fl)
             if len(os.listdir(fl)) == 0:
                 fl.rmdir()
 
